@@ -7,7 +7,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
 
 from plyer import accelerometer
-
+vals =[]
+num_vals = 5
 
 class AccelerometerTest(BoxLayout):
     def __init__(self):
@@ -37,10 +38,16 @@ class AccelerometerTest(BoxLayout):
     def get_acceleration(self, dt):
         val = accelerometer.acceleration[:3]
         if not val == (None, None, None):
-            val = tuple((round(v,2) for v in val))
-            self.ids.x_label.text = "X: " + str(val[0])
-            self.ids.y_label.text = "Y: " + str(val[1])
-            self.ids.z_label.text = "Z: " + str(val[2])
+            # val = tuple((round(v,2) for v in val))
+            vals = ([val]+vals)[:num_vals]
+            aval = (
+                sum([v[0] for v in vals])/num_vals,
+                sum([v[1] for v in vals])/num_vals,
+                sum([v[2] for v in vals])/num_vals
+            ) 
+            self.ids.x_label.text = "X: " + str(aval[0])
+            self.ids.y_label.text = "Y: " + str(aval[1])
+            self.ids.z_label.text = "Z: " + str(aval[2])
 
 
 class AccelerometerTestApp(App):
