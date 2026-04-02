@@ -8,7 +8,7 @@ from kivy.clock import Clock
 
 from plyer import accelerometer
 vals =[]
-num_vals = 50
+num_vals = 500
 
 class AccelerometerTest(BoxLayout):
     def __init__(self):
@@ -19,7 +19,7 @@ class AccelerometerTest(BoxLayout):
         try:
             if not self.sensorEnabled:
                 accelerometer.enable()
-                Clock.schedule_interval(self.get_acceleration, 1 / 20.)
+                Clock.schedule_interval(self.get_acceleration, 1 / 10.)
 
                 self.sensorEnabled = True
                 self.ids.toggle_button.text = "Stop Accelerometer"
