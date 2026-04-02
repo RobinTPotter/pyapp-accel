@@ -39,6 +39,7 @@ class AccelerometerTest(BoxLayout):
         val = accelerometer.acceleration[:3]
         if not val == (None, None, None):
             # val = tuple((round(v,2) for v in val))
+            global vals
             vals = ([val]+vals)[:num_vals]
             aval = (
                 sum([v[0] for v in vals])/num_vals,
