@@ -8,7 +8,7 @@ from kivy.clock import Clock
 
 from plyer import accelerometer
 vals =[]
-num_vals = 5
+num_vals = 50
 
 class AccelerometerTest(BoxLayout):
     def __init__(self):
@@ -46,6 +46,7 @@ class AccelerometerTest(BoxLayout):
                 sum([v[1] for v in vals])/num_vals,
                 sum([v[2] for v in vals])/num_vals
             ) 
+            aval = tuple((round(v,4) for v in val))
             self.ids.x_label.text = "X: " + str(aval[0])
             self.ids.y_label.text = "Y: " + str(aval[1])
             self.ids.z_label.text = "Z: " + str(aval[2])
