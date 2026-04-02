@@ -36,8 +36,8 @@ class AccelerometerTest(BoxLayout):
 
     def get_acceleration(self, dt):
         val = accelerometer.acceleration[:3]
-
         if not val == (None, None, None):
+            val = tuple((round(v,2) for v in val))
             self.ids.x_label.text = "X: " + str(val[0])
             self.ids.y_label.text = "Y: " + str(val[1])
             self.ids.z_label.text = "Z: " + str(val[2])
